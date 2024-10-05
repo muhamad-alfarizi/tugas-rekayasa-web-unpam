@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Form Registrasi dengan Validasi</title>
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .invalid-feedback {
+            display: none;
+        }
+        input:invalid ~ .invalid-feedback {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h3 class="text-center">Form Registrasi</h3>
+        <form id="registrationForm" novalidate>
+            <div class="mb-3">
+                <label for="nama" class="form-label">Nama Lengkap</label>
+                <input type="text" class="form-control" id="nama" placeholder="Masukkan nama lengkap" required>
+                <div class="invalid-feedback">Nama wajib diisi.</div>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Masukkan email" required>
+                <div class="invalid-feedback">Email wajib diisi dengan format yang benar.</div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Masukkan password" required>
+                <div class="invalid-feedback">Password wajib diisi.</div>
+            </div>
+            <button type="submit" class="btn btn-custom w-100">Daftar</button>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript untuk validasi form
+        (function() {
+            'use strict';
+            const form = document.getElementById('registrationForm');
+            form.addEventListener('submit', function(event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        })();
+    </script>
+</body>
+</html>
